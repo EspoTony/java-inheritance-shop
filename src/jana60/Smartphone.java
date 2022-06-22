@@ -1,22 +1,26 @@
 package jana60;
 
+import java.util.Random;
+
 public class Smartphone extends Prodotto {
-	
+
+	Random rand = new Random();
 	// Attributi
-		long codiceIMEI;
-		int quantitamemoria;
+	private int codiceIMEI = rand.nextInt(1000000000);
+	private int quantitamemoria;
 
-		// Costruttore
+	// Costruttore
 
-		public Smartphone(int codice, String nome, String marca, double prezzo, long codiceIMEI, int quantitamemoria) {
-			super(codice, nome, marca, prezzo);
-			this.codiceIMEI = codiceIMEI;
-			this.quantitamemoria = quantitamemoria;
+	public Smartphone(int codice, String nome, String marca, double prezzo, int quantitamemoria) {
+		super(codice, nome, marca, prezzo);
+		this.quantitamemoria = quantitamemoria;
 
-		}
+	}
 
-		@Override
-		public String toString() {
-			return super.toString() + "Il tuo cellulare con IMEI: " + codiceIMEI + "Con memoria di: " + quantitamemoria;
-		}
+	// Override e string finale
+	@Override
+	public String toString() {
+		return super.toString() + ". Il tuo cellulare con IMEI: " + codiceIMEI + " Con memoria di: " + quantitamemoria
+				+ "GB";
+	}
 }
