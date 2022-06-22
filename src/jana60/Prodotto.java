@@ -3,64 +3,72 @@ package jana60;
 import java.text.DecimalFormat;
 
 public class Prodotto {
-	 //attributes
-    private int codice;
-    private String nome;
-    private String marca;
-    private double prezzo;
-    private int iva;
+	// Formattatore decimale
+		DecimalFormat df = new DecimalFormat("#.00€");
 
-    // constructor
-    public Prodotto(int codice, String nome, String marca, double prezzo, int iva) {
-        this.codice = codice;
-        this.nome = nome;
-        this.marca = marca;
-        this.prezzo = prezzo;
-        this.iva = iva;
-    }
+		// Attributi
+		private int codice;
+		private String nome;
+		private String marca;
+		private double prezzo;
+		private int iva = 22;
 
-    //getter/setter
-    public int getCodice() {
-        return codice;
-    }
+		// Costruttore
+		public Prodotto(int codice, String nome, String marca, double prezzo) {
+			super();
+			this.codice = codice;
+			this.nome = nome;
+			this.marca = marca;
+			this.prezzo = prezzo;
+		}
 
-    public String getNome() {
-        return nome;
-    }
+		// Getter and Setters;
 
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
+		public String getNome() {
+			return nome;
+		}
 
-    public String getMarca() {
-        return marca;
-    }
+		public void setNome(String nome) {
+			this.nome = nome;
+		}
 
-    public void setMarca(String marca) {
-        this.marca = marca;
-    }
+		public String getMarca() {
+			return marca;
+		}
 
-    public double getPrezzo() {
-        return prezzo;
-    }
+		public void setMarca(String marca) {
+			this.marca = marca;
+		}
 
-    public void setPrezzo(double prezzo) {
-        this.prezzo = prezzo;
-    }
+		public double getPrezzo() {
+			return prezzo;
+		}
 
-    public double getIva() {
-        return iva;
-    }
+		public void setPrezzo(double prezzo) {
+			this.prezzo = prezzo;
+		}
 
-    public void setIva(int iva) {
-        this.iva = iva;
-    }
+		public int getIva() {
+			return iva;
+		}
 
-    //altri methods
-    public String prezzoFormattato() {
-        DecimalFormat df = new DecimalFormat("0.00¤");
-        double prezzoFinale = prezzo+((prezzo/100)*iva);
-        return df.format(prezzoFinale);
-    }
+		public void setIva(int iva) {
+			this.iva = iva;
+		}
 
+		public int getCodice() {
+			return codice;
+		}
+
+		// Metodi
+		public double calcolaIva() {
+			return prezzo + ((prezzo / 100) * iva);
+		}
+
+		// Override con metodo per formattare
+		@Override
+		public String toString() {
+			return "Complimenti per aver acquistato il prodotto " + nome + " della marca " + marca + " al prezzo di "
+					+ df.format(calcolaIva());
+		}
 }
